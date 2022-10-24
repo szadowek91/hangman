@@ -9,7 +9,7 @@ import pl.szadowek91.hangman.utils.WordMapper;
 import java.util.List;
 
 @Service
-public class WordSelector {
+public class WordService {
 
     private final String path = "D:\\patrgra\\hangman\\src\\main\\resources\\words.txt"; // todo pobieranie z resource sciezki
 
@@ -19,4 +19,5 @@ public class WordSelector {
                 .toList();
         return list.get(RandomUtil.selectWordNumber(list.size())).getWord();
     }
+
 }

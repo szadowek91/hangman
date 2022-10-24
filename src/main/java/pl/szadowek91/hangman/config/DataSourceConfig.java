@@ -7,18 +7,18 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 
-@Configuration
-public class DataSourceConfig {
-
-    @Bean
-    @Primary
-    public DataSource dataSource() {
-        return DataSourceBuilder
-                .create()
-                .username(Properties.SPRING_DATASOURCE_USERNAME)
-                .password(Properties.SPRING_DATASOURCE_PASSWORD)
-                .url(Properties.SPRING_DATASOURCE_URL)
-                .driverClassName(Properties.DRIVER_CLASS_NAME)
-                .build();
-    }
-}
+//@Configuration
+//public class DataSourceConfig {
+//
+//    @Bean
+//    @Primary
+//    public DataSource dataSource() {
+//        return DataSourceBuilder
+//                .create()
+//                .username(Properties.SPRING_DATASOURCE_USERNAME)
+//                .password(Properties.SPRING_DATASOURCE_PASSWORD)
+//                .url(Properties.SPRING_DATASOURCE_URL)
+//                .driverClassName(Properties.DRIVER_CLASS_NAME)
+//                .build();
+//    }
+//}

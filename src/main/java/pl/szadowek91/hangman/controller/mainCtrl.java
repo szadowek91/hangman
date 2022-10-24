@@ -18,7 +18,6 @@ public class mainCtrl {
         this.wordService = wordService;
     }
 
-
     @GetMapping("/test")
     public String test() {
         return "test";
@@ -26,7 +25,7 @@ public class mainCtrl {
 
     @GetMapping()
     public String game(Model model, HttpSession session) throws ServletException, IOException {
-        if (session.getAttribute("word") != null) {
+        if (session.getAttribute("word") == null) {
             String randomWord = wordService.selectRandomWord();
             session.setAttribute("word", randomWord);
         }

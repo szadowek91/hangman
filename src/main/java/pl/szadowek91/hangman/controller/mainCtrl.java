@@ -5,9 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.szadowek91.hangman.service.WordService;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 @Controller
 public class mainCtrl {
@@ -24,7 +22,7 @@ public class mainCtrl {
     }
 
     @GetMapping()
-    public String game(Model model, HttpSession session) throws ServletException, IOException {
+    public String game(Model model, HttpSession session) {
         if (session.getAttribute("word") == null) {
             String randomWord = wordService.selectRandomWord();
             session.setAttribute("word", randomWord);

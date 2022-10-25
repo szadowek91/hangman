@@ -8,8 +8,7 @@ import java.util.List;
  * @author PG
  */
 @Getter
-public class WordDictionaryDto {
+public class Meaning {
 
-    private List<Meaning> meanings;
-
+    private List<WordDefinition> definitions;
 }

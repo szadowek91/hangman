@@ -7,6 +7,8 @@ import pl.szadowek91.hangman.service.DictService;
 import pl.szadowek91.hangman.service.WordService;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class mainCtrl {
@@ -29,8 +31,9 @@ public class mainCtrl {
         if (session.getAttribute("word") == null) {
             String randomWord = wordService.selectRandomWord();
             session.setAttribute("word", randomWord);
-            String hintsFromAPI = dictService.getHints(randomWord);
-            session.setAttribute("hint", hintsFromAPI);
+            List<String> hintsFromAPI = dictService.getHints(randomWord);
+            String collectedHints = String.join(" || \n", hintsFromAPI);
+            session.setAttribute("hint", collectedHints);
         }
         String word = (String) session.getAttribute("word");
         String hintsFromAPI = (String) session.getAttribute("hint");

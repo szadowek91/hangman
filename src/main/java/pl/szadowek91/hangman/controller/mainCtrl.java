@@ -8,7 +8,6 @@ import pl.szadowek91.hangman.service.WordService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class mainCtrl {
@@ -37,7 +36,7 @@ public class mainCtrl {
         }
         String word = (String) session.getAttribute("word");
         String hintsFromAPI = (String) session.getAttribute("hint");
-        model.addAttribute("hint",hintsFromAPI);
+        model.addAttribute("hint", hintsFromAPI);
         model.addAttribute("word", word); // at the end to remove (for review purposes)
 
         return "hangman";

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
-import pl.szadowek91.hangman.dto.Meaning;
 import pl.szadowek91.hangman.dto.WordDefinition;
 import pl.szadowek91.hangman.dto.WordDictionaryDto;
 import pl.szadowek91.hangman.utils.ConstantPhrase;
@@ -53,14 +52,14 @@ public class DictService {
             List<WordDictionaryDto> wordDictionaryDtos = new Gson().fromJson(s, type);
             Optional<WordDictionaryDto> wordDictionaryDto = Optional.of(wordDictionaryDtos.get(0));
             return wordDictionaryDto;
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return Optional.empty();
     }
 
-    private String readInputStream(InputStreamReader reader){
-        try(BufferedReader in = new BufferedReader(reader)){
+    private String readInputStream(InputStreamReader reader) {
+        try (BufferedReader in = new BufferedReader(reader)) {
             return in.lines().collect(Collectors.joining());
         } catch (IOException e) {
             e.printStackTrace();

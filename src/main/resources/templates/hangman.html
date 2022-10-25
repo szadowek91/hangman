@@ -15,7 +15,12 @@
         <h2>Word to guess: <span th:text="${word}"></span> </h2>
         <h4>Hints: <span th:text="${hint}"></span></h4>
         </div>
-
+<div class="row">
+    <form action="post" method="post" role="form">
+        <input type="text" minlength="1">
+        <button type="submit" class="btn btn-primary">+ Check letter +</button>
+    </form>
+</div>
 </div>
 </body>
 </html>

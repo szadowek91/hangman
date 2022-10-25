@@ -3,6 +3,7 @@ package pl.szadowek91.hangman.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.szadowek91.hangman.service.DictService;
 import pl.szadowek91.hangman.service.WordService;
 
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpSession;
 public class mainCtrl {
 
     private final WordService wordService;
+    private final DictService dictService;
 
-    public mainCtrl(WordService wordService) {
+    public mainCtrl(WordService wordService, DictService dictService) {
         this.wordService = wordService;
+        this.dictService = dictService;
     }
 
     @GetMapping("/test")
@@ -26,10 +29,15 @@ public class mainCtrl {
         if (session.getAttribute("word") == null) {
             String randomWord = wordService.selectRandomWord();
             session.setAttribute("word", randomWord);
+            String hintsFromAPI = dictService.getHints(randomWord);
+            session.setAttribute("hint", hintsFromAPI);
         }
         String word = (String) session.getAttribute("word");
+        String hintsFromAPI = (String) session.getAttribute("hint");
+        model.addAttribute("hint",hintsFromAPI);
         model.addAttribute("word", word); // at the end to remove (for review purposes)
 
         return "hangman";
     }
+
 }

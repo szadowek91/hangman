@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.szadowek91.hangman.service.DictService;
 import pl.szadowek91.hangman.service.WordService;
@@ -33,13 +32,18 @@ public class mainCtrl {
         if (session.getAttribute("word") == null) {
             String randomWord = wordService.selectRandomWord();
             session.setAttribute("word", randomWord);
+
+            String actualWord = wordService.initShowActualWord(randomWord);
+
             List<String> hintsFromAPI = dictService.getHints(randomWord);
             String collectedHints = String.join(" || \n", hintsFromAPI);
             session.setAttribute("hint", collectedHints);
+            session.setAttribute("actualWord", actualWord);
         }
         String word = (String) session.getAttribute("word");
+        String actualWord = (String) session.getAttribute("actualWord");
         String hintsFromAPI = (String) session.getAttribute("hint");
-        String actualWord = wordService.showActualWord(word);
+
         model.addAttribute("actualWord", actualWord);
         model.addAttribute("hint", hintsFromAPI);
         model.addAttribute("word", word); // at the end to remove (for review purposes)
@@ -48,9 +52,11 @@ public class mainCtrl {
     }
 
     @PostMapping("/enteredLetter")
-    public String enteredLetter(Model model,@RequestParam("inputLetter") String inputLetter, HttpSession session){
+    public String enteredLetter(@RequestParam("inputLetter") String inputLetter, HttpSession session){
         String word = (String) session.getAttribute("word");
-        System.out.println(inputLetter);
+        String actualWord = (String) session.getAttribute("actualWord");
+        String showLetterInWord = wordService.checkLetterInWord(inputLetter, word, actualWord);
+        session.setAttribute("actualWord", showLetterInWord);
         return "redirect:/";
     }
 

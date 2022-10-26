@@ -3,6 +3,9 @@ package pl.szadowek91.hangman.utils;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author PG
+ */
 public class ConsoleInput {
 
     public static String getInputUserString() {

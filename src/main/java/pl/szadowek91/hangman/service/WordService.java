@@ -9,6 +9,9 @@ import pl.szadowek91.hangman.utils.WordMapper;
 
 import java.util.*;
 
+/**
+ * @author PG
+ */
 @Service
 public class WordService {
     private final String path = Objects.requireNonNull(ClassLoader.getSystemClassLoader().getResource("words.txt")).getPath();

@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
-
+///**
+// * @author PG
+// */
 //@Configuration
 //public class DataSourceConfig {
 //

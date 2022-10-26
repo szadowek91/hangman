@@ -1,5 +1,8 @@
 package pl.szadowek91.hangman.config;
 
+/**
+ * @author PG
+ */
 public class Properties {
 
     public static final String NAME = "Hangman - the game";

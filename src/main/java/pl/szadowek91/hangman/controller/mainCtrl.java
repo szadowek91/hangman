@@ -11,6 +11,9 @@ import pl.szadowek91.hangman.service.WordService;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * @author PG
+ */
 @Controller
 public class mainCtrl {
 

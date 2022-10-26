@@ -60,4 +60,10 @@ public class mainCtrl {
         return "redirect:/";
     }
 
+    @PostMapping("/newGame")
+    public String newGame(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
+
 }

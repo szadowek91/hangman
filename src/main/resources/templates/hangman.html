@@ -10,24 +10,16 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <h3>Word to guess: <span th:text="${word}"></span></h3>
-        <div class="row">
-            <h3>Actual: <span th:text="${actualWord}"></span></h3>
+<h3>Word to guess: <span th:text="${word}"></span></h3>
 
-            <div class="row">
-                <h3>Hints: <span th:text="${hint}"></span></h3>
+<h3>Actual: <span th:text="${actualWord}"></span></h3>
 
-                <div class="row">
-                    <form action="/enteredLetter" method="post" role="form">
-                        <input type="text" name="inputLetter" minlength="1" maxlength="1">
-                        <button type="submit" class="btn btn-primary">+ Check letter +</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<h3>Hints: <span th:text="${hint}"></span></h3>
+
+<form action="/enteredLetter" method="post" role="form">
+    <input type="text" name="inputLetter" minlength="1" maxlength="1">
+    <button type="submit" class="btn btn-primary">+ Check letter +</button>
+</form>
+
 </body>
 </html>

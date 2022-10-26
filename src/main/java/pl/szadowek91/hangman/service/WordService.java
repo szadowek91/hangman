@@ -48,4 +48,22 @@ public class WordService {
             }
         return String.join(" ", replacedWord);
     }
+
+    public String usedLettersOk(String inputLetter, String word, String usedLettersCorrect) {
+        String lettersOK = usedLettersCorrect;
+        if (word.contains(inputLetter.toUpperCase()) && !usedLettersCorrect.contains(inputLetter.toUpperCase())) {
+            lettersOK = usedLettersCorrect.concat(" ").concat(inputLetter.toUpperCase());
+            return lettersOK;
+        }
+        return lettersOK;
+    }
+
+    public String usedLettersNotOk(String inputLetter, String word, String usedLettersDoesNotMatch) {
+        String lettersNotOk = usedLettersDoesNotMatch;
+        if (!word.contains(inputLetter.toUpperCase()) && !usedLettersDoesNotMatch.contains(inputLetter.toUpperCase())) {
+            lettersNotOk = usedLettersDoesNotMatch.concat(" ").concat(inputLetter.toUpperCase());
+            return lettersNotOk;
+        }
+        return lettersNotOk;
+    }
 }
